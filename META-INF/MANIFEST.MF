@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.jpox.ide.eclipse
-Bundle-SymbolicName: org.jpox.ide.eclipse; singleton:=true
-Bundle-Version: 1.1.3
+Bundle-Name: com.datanucleus.ide.eclipse
+Bundle-SymbolicName: com.datanucleus.ide.eclipse;singleton:=true
+Bundle-Version: 1.0.0.m1
 Bundle-ClassPath: jpox-eclipse-plugin.jar
-Bundle-Activator: org.jpox.ide.eclipse.Plugin
-Bundle-Vendor: JPOX
+Bundle-Activator: com.datanucleus.ide.eclipse.Plugin
+Bundle-Vendor: DataNucleus
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
@@ -19,12 +19,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.debug.ui,
  org.eclipse.ui.console
 Eclipse-AutoStart: true
-Export-Package: org.jpox.ide.eclipse,
- org.jpox.ide.eclipse.console,
- org.jpox.ide.eclipse.jobs,
- org.jpox.ide.eclipse.popup.actions,
- org.jpox.ide.eclipse.preferences,
- org.jpox.ide.eclipse.project,
- org.jpox.ide.eclipse.wizard.createappid,
- org.jpox.ide.eclipse.wizard.createmetadata,
- org.jpox.ide.eclipse.wizard.schematool
+Export-Package: com.datanucleus.ide.eclipse,
+ com.datanucleus.ide.eclipse.console,
+ com.datanucleus.ide.eclipse.jobs,
+ com.datanucleus.ide.eclipse.popup.actions,
+ com.datanucleus.ide.eclipse.preferences,
+ com.datanucleus.ide.eclipse.project,
+ com.datanucleus.ide.eclipse.wizard.createappid,
+ com.datanucleus.ide.eclipse.wizard.createmetadata,
+ com.datanucleus.ide.eclipse.wizard.schematool
