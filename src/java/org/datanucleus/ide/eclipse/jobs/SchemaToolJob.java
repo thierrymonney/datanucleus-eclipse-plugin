@@ -60,9 +60,9 @@ import org.eclipse.ui.progress.IProgressConstants;
  */
 public class SchemaToolJob extends Job implements IDebugEventSetListener
 {
-    private static final String NAME = "JPOX Schema Tool";
+    private static final String NAME = "DataNucleus Schema Tool";
 
-    private static final String MAINCLASS = "org.datanucleus.SchemaTool";
+    private static final String MAINCLASS = "org.datanucleus.store.rdbms.SchemaTool";
 
     private IJavaProject javaProject;
 
