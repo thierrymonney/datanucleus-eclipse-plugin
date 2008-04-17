@@ -40,9 +40,9 @@ import org.eclipse.jdt.core.IJavaProject;
  */
 public class EnhancerJob extends WorkspaceJob
 {
-    private static final String NAME = "JPOX Enhancer";
+    private static final String NAME = "DataNucleus Enhancer";
 
-    private static final String MAINCLASS = "org.jpox.enhancer.JPOXEnhancer";
+    private static final String MAINCLASS = "org.datanucleus.enhancer.DataNucleusEnhancer";
 
     private IJavaProject javaProject;
 
