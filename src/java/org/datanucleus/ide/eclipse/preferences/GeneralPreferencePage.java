@@ -51,7 +51,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  */
 public class GeneralPreferencePage extends PropertyAndPreferencePage implements IWorkbenchPreferencePage, PreferenceConstants
 {
-    public static final String PAGE_ID = "org.jpox.ide.eclipse.preferences.general"; 
+    public static final String PAGE_ID = "org.datanucleus.ide.eclipse.preferences.general"; 
 
     /** Combo selector for JPOX version. */
     private Combo versionCombo;

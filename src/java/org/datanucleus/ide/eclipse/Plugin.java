@@ -55,9 +55,9 @@ public class Plugin extends AbstractUIPlugin
     private ResourceBundle resourceBundle;
 
     /**
-     * Unique identifier constant (value <code>"org.jpox.ide.eclipse"</code>)
+     * Unique identifier constant (value <code>"org.datanucleus.ide.eclipse"</code>)
      */
-    public static final String ID = "org.jpox.ide.eclipse";
+    public static final String ID = "org.datanucleus.ide.eclipse";
 
     public static final String EXTENSION_POINT_URLTEMPLATE = ID + ".urlTemplate";
 
@@ -72,14 +72,14 @@ public class Plugin extends AbstractUIPlugin
         plugin = this;
         try
         {
-            resourceBundle = ResourceBundle.getBundle("org.jpox.ide.eclipse.JDOResources");
+            resourceBundle = ResourceBundle.getBundle("org.datanucleus.ide.eclipse.JDOResources");
         }
         catch (MissingResourceException x)
         {
             try
             {
                 // WORKAROUND: when using export, the PDE export tool, puts the properties file under java in the jar
-                resourceBundle = ResourceBundle.getBundle("java.org.jpox.ide.eclipse.JDOResources");
+                resourceBundle = ResourceBundle.getBundle("java.org.datanucleus.ide.eclipse.JDOResources");
             }
             catch (MissingResourceException x1)
             {

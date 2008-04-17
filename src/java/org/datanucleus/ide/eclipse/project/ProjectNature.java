@@ -21,9 +21,9 @@ import org.eclipse.core.runtime.CoreException;
  */
 public class ProjectNature implements IProjectNature
 {
-    public static final String NATURE = "org.jpox.ide.eclipse.projectnature";
+    public static final String NATURE = "org.datanucleus.ide.eclipse.projectnature";
 
-    public static final String BUILDER = "org.jpox.ide.eclipse.enhancerbuilder";
+    public static final String BUILDER = "org.datanucleus.ide.eclipse.enhancerbuilder";
 
     private IProject project;
 

@@ -62,7 +62,7 @@ public class SchemaToolJob extends Job implements IDebugEventSetListener
 {
     private static final String NAME = "JPOX Schema Tool";
 
-    private static final String MAINCLASS = "org.jpox.SchemaTool";
+    private static final String MAINCLASS = "org.datanucleus.SchemaTool";
 
     private IJavaProject javaProject;
 

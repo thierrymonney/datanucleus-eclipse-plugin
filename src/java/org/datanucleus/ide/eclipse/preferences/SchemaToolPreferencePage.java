@@ -66,7 +66,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  */
 public class SchemaToolPreferencePage extends PropertyAndPreferencePage implements IWorkbenchPreferencePage, PreferenceConstants
 {
-    public static final String PAGE_ID = "org.jpox.ide.eclipse.preferences.schematool";
+    public static final String PAGE_ID = "org.datanucleus.ide.eclipse.preferences.schematool";
 
     /** List containing the selected file extensions to use with SchemaTool. */
     private List fileExtensionsList;

@@ -47,7 +47,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  */
 public class EnhancerPreferencePage extends PropertyAndPreferencePage implements IWorkbenchPreferencePage, PreferenceConstants
 {
-    public static final String PAGE_ID = "org.jpox.ide.eclipse.preferences.enhancer";
+    public static final String PAGE_ID = "org.datanucleus.ide.eclipse.preferences.enhancer";
 
     /** Button containing whether to run the enhancer in verbose mode or not. */
     private Button verboseModeCheckButton;

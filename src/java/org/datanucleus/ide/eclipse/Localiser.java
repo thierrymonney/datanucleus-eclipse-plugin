@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
  */
 public class Localiser
 {
-    private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle("org.jpox.ide.eclipse.Localisation");
+    private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle("org.datanucleus.ide.eclipse.Localisation");
 
     private Localiser()
     {
