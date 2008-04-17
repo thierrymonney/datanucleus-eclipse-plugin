@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: com.datanucleus.ide.eclipse
-Bundle-SymbolicName: com.datanucleus.ide.eclipse;singleton:=true
+Bundle-Name: org.datanucleus.ide.eclipse
+Bundle-SymbolicName: org.datanucleus.ide.eclipse;singleton:=true
 Bundle-Version: 1.0.0.m1
-Bundle-ClassPath: jpox-eclipse-plugin.jar
+Bundle-ClassPath: datanucleus-eclipse-plugin.jar
 Bundle-Activator: org.datanucleus.ide.eclipse.Plugin
 Bundle-Vendor: DataNucleus
 Bundle-Localization: plugin
