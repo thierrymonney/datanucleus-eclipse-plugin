@@ -4,7 +4,7 @@ Bundle-Name: com.datanucleus.ide.eclipse
 Bundle-SymbolicName: com.datanucleus.ide.eclipse;singleton:=true
 Bundle-Version: 1.0.0.m1
 Bundle-ClassPath: jpox-eclipse-plugin.jar
-Bundle-Activator: com.datanucleus.ide.eclipse.Plugin
+Bundle-Activator: org.datanucleus.ide.eclipse.Plugin
 Bundle-Vendor: DataNucleus
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
@@ -19,12 +19,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.debug.ui,
  org.eclipse.ui.console
 Eclipse-AutoStart: true
-Export-Package: com.datanucleus.ide.eclipse,
- com.datanucleus.ide.eclipse.console,
- com.datanucleus.ide.eclipse.jobs,
- com.datanucleus.ide.eclipse.popup.actions,
- com.datanucleus.ide.eclipse.preferences,
- com.datanucleus.ide.eclipse.project,
- com.datanucleus.ide.eclipse.wizard.createappid,
- com.datanucleus.ide.eclipse.wizard.createmetadata,
- com.datanucleus.ide.eclipse.wizard.schematool
+Export-Package: org.datanucleus.ide.eclipse,
+ org.datanucleus.ide.eclipse.console,
+ org.datanucleus.ide.eclipse.jobs,
+ org.datanucleus.ide.eclipse.popup.actions,
+ org.datanucleus.ide.eclipse.preferences,
+ org.datanucleus.ide.eclipse.project,
+ org.datanucleus.ide.eclipse.wizard.createappid,
+ org.datanucleus.ide.eclipse.wizard.createmetadata,
+ org.datanucleus.ide.eclipse.wizard.schematool
