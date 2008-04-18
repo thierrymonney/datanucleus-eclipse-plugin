@@ -556,7 +556,7 @@ public class SchemaToolPreferencePage extends PropertyAndPreferencePage implemen
 
     /*
      * (non-Javadoc)
-     * @see org.jpox.ide.eclipse.preferences.PropertyAndPreferencePage#getPageId()
+     * @see org.datanucleus.ide.eclipse.preferences.PropertyAndPreferencePage#getPageId()
      */
     protected String getPageId()
     {

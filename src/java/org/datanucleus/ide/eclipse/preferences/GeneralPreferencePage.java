@@ -328,7 +328,7 @@ public class GeneralPreferencePage extends PropertyAndPreferencePage implements 
 
     /*
      * (non-Javadoc)
-     * @see org.jpox.ide.eclipse.preferences.PropertyAndPreferencePage#getPageId()
+     * @see org.datanucleus.ide.eclipse.preferences.PropertyAndPreferencePage#getPageId()
      */
     protected String getPageId()
     {
