@@ -41,7 +41,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 
 
 /**
- * Preferences Page for the JPOX Enhancer.
+ * Preferences Page for the DataNucleus Enhancer.
  *
  * @version $Revision$
  */

@@ -60,7 +60,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 
 
 /**
- * Preferences Page for JPOX SchemaTool.
+ * Preferences Page for DataNucleus SchemaTool.
  *
  * @version $Revision: 1.8 $
  */

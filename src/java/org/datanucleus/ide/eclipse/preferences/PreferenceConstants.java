@@ -19,8 +19,6 @@ package org.datanucleus.ide.eclipse.preferences;
 
 /**
  * Convenience class with a series of constants.
- *
- * @version $Revision: 1.8 $
  */
 public interface PreferenceConstants
 {
@@ -55,8 +53,6 @@ public interface PreferenceConstants
     public String SCHEMATOOL_API = "schemaToolAPI";
 
     public String SCHEMATOOL_PERSISTENCE_UNIT = "schematoolPersistenceUnit";
-
-    public String JPOX_VERSION = "jpoxVersion";
 
     public String LOGGING_CONFIGURATION_FILE = "loggingConfigurationFile";
 

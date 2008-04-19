@@ -31,7 +31,6 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.FileDialog;
@@ -43,18 +42,12 @@ import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-
 /**
  * Preference page for general parameters (logging, classpath etc).
- *
- * @version $Revision: 1.7 $
  */
 public class GeneralPreferencePage extends PropertyAndPreferencePage implements IWorkbenchPreferencePage, PreferenceConstants
 {
     public static final String PAGE_ID = "org.datanucleus.ide.eclipse.preferences.general"; 
-
-    /** Combo selector for JPOX version. */
-    private Combo versionCombo;
 
     /** Text widget storing the log file name. */
     private Text logFileText;
@@ -98,16 +91,6 @@ public class GeneralPreferencePage extends PropertyAndPreferencePage implements 
         GridData gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 3;
         help.setLayoutData(gd);
-
-        // JPOX Version
-        Label apiLabel = new Label(composite, SWT.NULL);
-        apiLabel.setText(Localiser.getString("GeneralPreferences.Version.Label"));
-
-        versionCombo = new Combo(composite, SWT.DROP_DOWN | SWT.READ_ONLY);
-        versionCombo.setItems(new String[] {"1.1", "1.2"});
-        GridData apiGrid = new GridData(SWT.FILL, SWT.NULL, false, false);
-        versionCombo.setLayoutData(apiGrid);
-        versionCombo.setToolTipText(Localiser.getString("GeneralPreferences.Version.Tooltip"));
 
         // Classpath
         Group group = new Group(composite, SWT.NONE);
@@ -296,9 +279,6 @@ public class GeneralPreferencePage extends PropertyAndPreferencePage implements 
      */
     private void initControls()
     {
-        String version = getPreferenceStore().getString(JPOX_VERSION);
-        versionCombo.setText(version);
-
         String classpath = getPreferenceStore().getString(CLASSPATH_ENTRIES);
         String[] classpathEntries = classpath.split(System.getProperty("path.separator"));
         classpathJarsList.setItems(classpathEntries);
@@ -322,7 +302,6 @@ public class GeneralPreferencePage extends PropertyAndPreferencePage implements 
         getPreferenceStore().setValue(LOGGING_CONFIGURATION_FILE, logFileText.getText());
         getPreferenceStore().setValue(CLASSPATH_ENTRIES, getClasspathEntries());
         getPreferenceStore().setValue(USE_PROJECT_CLASSPATH, projectClasspathButton.getSelection());
-        getPreferenceStore().setValue(JPOX_VERSION, versionCombo.getText());
         return super.performOk();
     }
 

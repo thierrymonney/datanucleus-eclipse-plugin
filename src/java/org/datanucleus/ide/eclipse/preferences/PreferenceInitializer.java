@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 Contributors:
+2008 Andy Jefferson - default for file types, API, enhancerName etc
     ...
 **********************************************************************/
 package org.datanucleus.ide.eclipse.preferences;
@@ -23,11 +24,8 @@ import org.datanucleus.ide.eclipse.Plugin;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
-
 /**
  * Initialize the preference values for all common settings in the plugin.
- * 
- * @version $Revision: 1.7 $
  */
 public class PreferenceInitializer extends AbstractPreferenceInitializer
 {
@@ -48,8 +46,6 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer
         store.setDefault(PreferenceConstants.LOGGING_CONFIGURATION_FILE, loggingConfiguration);
 
         store.setDefault(PreferenceConstants.USE_PROJECT_CLASSPATH, true);
-
-        store.setDefault(PreferenceConstants.JPOX_VERSION, "1.2");
 
         // Enhancer
         String val = "jdo" + System.getProperty("path.separator") + "class";

@@ -39,7 +39,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
- * Entry point for the JPOX Eclipse plugin.
+ * Entry point for the DataNucleus Eclipse plugin.
  * 
  * @version $Revision: 1.7 $
  */

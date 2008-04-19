@@ -17,10 +17,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-
 /**
- * @author Michael Grundmann
- * @version $Revision: 1.1 $
  */
 public class CreateMetadataAction implements IObjectActionDelegate
 {

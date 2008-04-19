@@ -20,7 +20,6 @@ package org.datanucleus.ide.eclipse.wizard.schematool;
 
 import org.datanucleus.ide.eclipse.Plugin;
 import org.datanucleus.ide.eclipse.jobs.SchemaToolJob;
-import org.datanucleus.ide.eclipse.preferences.GeneralPreferencePage;
 import org.datanucleus.ide.eclipse.preferences.PreferenceConstants;
 import org.datanucleus.ide.eclipse.preferences.SchemaToolPreferencePage;
 import org.datanucleus.ide.eclipse.project.ProjectHelper;
@@ -33,11 +32,8 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 
-
 /**
  * Wizard for running SchemaTool.
- * 
- * @version $Revision: 1.7 $
  */
 public class SchemaToolWizard extends Wizard implements INewWizard
 {
@@ -132,8 +128,6 @@ public class SchemaToolWizard extends Wizard implements INewWizard
             SchemaToolPreferencePage.PAGE_ID, PreferenceConstants.SCHEMATOOL_API));
         model.setVerbose(ProjectHelper.getBooleanPreferenceValue(javaProject.getProject(),
             SchemaToolPreferencePage.PAGE_ID, PreferenceConstants.SCHEMATOOL_VERBOSE_MODE));
-        model.setJPOXVersion(ProjectHelper.getStringPreferenceValue(javaProject.getProject(),
-            GeneralPreferencePage.PAGE_ID, PreferenceConstants.JPOX_VERSION));
     }
 
     /**

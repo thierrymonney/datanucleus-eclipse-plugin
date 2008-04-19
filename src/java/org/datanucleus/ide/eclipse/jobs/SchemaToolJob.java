@@ -196,21 +196,17 @@ public class SchemaToolJob extends Job implements IDebugEventSetListener
         }
 
         // API
-        if (!model.getJPOXVersion().equals("1.1"))
+        String apiName = model.getApi();
+        if (apiName != null && apiName.trim().length() > 0)
         {
-            // JPOX 1.2+ allows selection of API
-            String apiName = model.getApi();
-            if (apiName != null && apiName.trim().length() > 0)
-            {
-                args.append(" -api ").append(apiName.trim());
-            }
+            args.append(" -api ").append(apiName.trim());
+        }
 
-            // JPOX 1.2+ allows selection of PersistenceUnit
-            String persistenceUnit = model.getPersistenceUnit();
-            if (persistenceUnit != null && persistenceUnit.trim().length() > 0)
-            {
-                args.append(" -persistenceUnit ").append(persistenceUnit.trim());
-            }
+        // PersistenceUnit
+        String persistenceUnit = model.getPersistenceUnit();
+        if (persistenceUnit != null && persistenceUnit.trim().length() > 0)
+        {
+            args.append(" -persistenceUnit ").append(persistenceUnit.trim());
         }
 
         // verbose
