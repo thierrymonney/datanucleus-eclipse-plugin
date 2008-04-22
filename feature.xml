@@ -207,6 +207,6 @@ All rights reserved.
         <update label="DataNucleus Eclipse" url="http://www.datanucleus.org/downloads/eclipse-update/site.xml"/>
     </url>
 
-    <plugin id="org.datanucleus.ide.eclipse" download-size="0" install-size="0" version="1.1.3"/>
+    <plugin id="org.datanucleus.ide.eclipse" download-size="0" install-size="0" version="1.0.0.m1"/>
 
 </feature>

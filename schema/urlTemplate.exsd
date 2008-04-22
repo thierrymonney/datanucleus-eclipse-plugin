@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.jpox.ide.eclipse">
+<schema targetNamespace="org.datanucleus.ide.eclipse">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.jpox.ide.eclipse" id="urlTemplate" name="URL Template"/>
+         <meta.schema plugin="org.datanucleus.ide.eclipse" id="urlTemplate" name="URL Template"/>
       </appInfo>
       <documentation>
          To connect to a database server we need a url that is understandable by a driver
@@ -108,8 +108,6 @@ URLs are difficult to write and this this extension point will provide templates
       </appInfo>
       <documentation>
          Copyright (c) 2006 Erik Bengtson and others. All rights reserved. 
- This program and the accompanying materials are made available under 
- the terms of the JPOX License v1.0 which accompanies this distribution.
       </documentation>
    </annotation>
 
