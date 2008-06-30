@@ -52,11 +52,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.IProgressConstants;
 
-
 /**
  * Class that performs the SchemaTool process.
- * 
- * @version $Revision: 1.18 $
  */
 public class SchemaToolJob extends Job implements IDebugEventSetListener
 {
@@ -203,9 +200,11 @@ public class SchemaToolJob extends Job implements IDebugEventSetListener
         }
 
         // PersistenceUnit
+        boolean usingPersistenceUnit = false;
         String persistenceUnit = model.getPersistenceUnit();
         if (persistenceUnit != null && persistenceUnit.trim().length() > 0)
         {
+            usingPersistenceUnit = true;
             args.append(" -persistenceUnit ").append(persistenceUnit.trim());
         }
 
@@ -217,14 +216,17 @@ public class SchemaToolJob extends Job implements IDebugEventSetListener
         }
 
         // Input files (jdo/class)
-        List argsList = new ArrayList();
-        String fileSuffix = ProjectHelper.getStringPreferenceValue(resource, SchemaToolPreferencePage.PAGE_ID,
-            PreferenceConstants.SCHEMATOOL_INPUT_FILE_EXTENSIONS);
-        String[] fileSuffixes = fileSuffix.split(System.getProperty("path.separator"));
-        LaunchUtilities.getInputFiles(argsList, resource, javaProject, fileSuffixes, true);
-        for (int i = 0; i < argsList.size(); i++)
+        if (!usingPersistenceUnit)
         {
-            args.append(argsList.get(i));
+            List argsList = new ArrayList();
+            String fileSuffix = ProjectHelper.getStringPreferenceValue(resource, 
+                SchemaToolPreferencePage.PAGE_ID, PreferenceConstants.SCHEMATOOL_INPUT_FILE_EXTENSIONS);
+            String[] fileSuffixes = fileSuffix.split(System.getProperty("path.separator"));
+            LaunchUtilities.getInputFiles(argsList, resource, javaProject, fileSuffixes, true);
+            for (int i = 0; i < argsList.size(); i++)
+            {
+                args.append(argsList.get(i));
+            }
         }
 
         return args.toString();

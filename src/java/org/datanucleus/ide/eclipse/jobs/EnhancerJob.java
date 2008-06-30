@@ -32,11 +32,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.IJavaProject;
 
-
 /**
  * Class that performs the enhancement process.
- *
- * @version $Revision: 1.11 $
  */
 public class EnhancerJob extends WorkspaceJob
 {
@@ -91,22 +88,27 @@ public class EnhancerJob extends WorkspaceJob
         }
 
         // PersistenceUnit
+        boolean usingPersistenceUnit = false;
         String persistenceUnit = ProjectHelper.getStringPreferenceValue(resource, EnhancerPreferencePage.PAGE_ID,
             PreferenceConstants.ENHANCER_PERSISTENCE_UNIT);
         if (persistenceUnit != null && persistenceUnit.trim().length() > 0)
         {
+            usingPersistenceUnit = true;
             args.append(" -persistenceUnit ").append(persistenceUnit.trim());
         }
 
         // Input files (jdo/class)
-        List argsList = new ArrayList();
-        String fileSuffix = ProjectHelper.getStringPreferenceValue(resource, EnhancerPreferencePage.PAGE_ID,
-            PreferenceConstants.ENHANCER_INPUT_FILE_EXTENSIONS);
-        String[] fileSuffixes = fileSuffix.split(System.getProperty("path.separator"));
-        LaunchUtilities.getInputFiles(argsList, resource, javaProject, fileSuffixes, true);
-        for (int i = 0; i < argsList.size(); i++)
+        if (!usingPersistenceUnit)
         {
-            args.append(argsList.get(i));
+            List argsList = new ArrayList();
+            String fileSuffix = ProjectHelper.getStringPreferenceValue(resource, 
+                EnhancerPreferencePage.PAGE_ID, PreferenceConstants.ENHANCER_INPUT_FILE_EXTENSIONS);
+            String[] fileSuffixes = fileSuffix.split(System.getProperty("path.separator"));
+            LaunchUtilities.getInputFiles(argsList, resource, javaProject, fileSuffixes, true);
+            for (int i = 0; i < argsList.size(); i++)
+            {
+                args.append(argsList.get(i));
+            }
         }
 
         return args.toString();
