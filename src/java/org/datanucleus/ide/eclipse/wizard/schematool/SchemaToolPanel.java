@@ -185,7 +185,7 @@ public class SchemaToolPanel extends Composite
                     IPath path = filterPath.append(jarName).makeAbsolute();
                     try
                     {
-                        urls[i] = path.toFile().toURL();
+                        urls[i] = path.toFile().toURI().toURL();
                     }
                     catch (MalformedURLException e1)
                     {
@@ -201,12 +201,12 @@ public class SchemaToolPanel extends Composite
                     {
                         String jarName = results[i];
                         IPath path = filterPath.append(jarName).makeAbsolute();
-                        urls[i] = path.toFile().toURL();
+                        urls[i] = path.toFile().toURI().toURL();
                         if( driverJarText.getText().length()>0 )
                         {
                             driverJarText.setText(driverJarText.getText()+";");
                         }
-                        driverJarText.setText(driverJarText.getText()+path.toFile().toURL().toString());
+                        driverJarText.setText(driverJarText.getText()+path.toFile().toURI().toURL().toString());
                         JarFile jar = new JarFile(path.toFile());
                         Enumeration entries = jar.entries();
                         while( entries.hasMoreElements() )
