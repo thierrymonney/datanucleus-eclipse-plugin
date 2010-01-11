@@ -91,6 +91,7 @@ public class SchemaToolWizard extends Wizard implements INewWizard
         addPage(schemaToolSettingsPage);
     }
 
+    @SuppressWarnings("deprecation")
     private void initializeModelState()
     {
         String url = Plugin.getDefault().getPluginPreferences().getString(P_CONNECTION_URL);
@@ -153,6 +154,7 @@ public class SchemaToolWizard extends Wizard implements INewWizard
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     public boolean performFinish()
     {
         try

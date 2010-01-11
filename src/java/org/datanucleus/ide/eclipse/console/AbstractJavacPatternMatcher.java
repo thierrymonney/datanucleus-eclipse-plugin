@@ -56,6 +56,7 @@ public abstract class AbstractJavacPatternMatcher implements IPatternMatchListen
         fFileNameToIFile.clear();
     }
 
+    @SuppressWarnings("deprecation")
     protected IFile getIFile(String filePath)
     {
         if (filePath == null)
