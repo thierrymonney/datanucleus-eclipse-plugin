@@ -94,7 +94,7 @@ public class EnhancerJob extends WorkspaceJob
         if (persistenceUnit != null && persistenceUnit.trim().length() > 0)
         {
             usingPersistenceUnit = true;
-            args.append(" -persistenceUnit ").append(persistenceUnit.trim());
+            args.append(" -pu ").append(persistenceUnit.trim());
         }
 
         // Input files (jdo/class)

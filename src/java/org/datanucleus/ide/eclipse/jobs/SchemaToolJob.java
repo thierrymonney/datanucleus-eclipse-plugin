@@ -205,7 +205,7 @@ public class SchemaToolJob extends Job implements IDebugEventSetListener
         if (persistenceUnit != null && persistenceUnit.trim().length() > 0)
         {
             usingPersistenceUnit = true;
-            args.append(" -persistenceUnit ").append(persistenceUnit.trim());
+            args.append(" -pu ").append(persistenceUnit.trim());
         }
 
         // verbose
