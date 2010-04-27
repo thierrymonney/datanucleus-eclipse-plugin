@@ -132,8 +132,7 @@ public class SchemaToolMainPage extends WizardPage implements Listener
                 IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation();
                 path = path.append(control.getFileNameText().getText());
 
-                // In JPOX 1.2 this is "ddlFile" but "dumpDdl" is retained for backwards compatibility
-                options = options + "-dumpDdl " + "\"" + path.toOSString() + "\"";
+                options = options + "-ddlFile " + "\"" + path.toOSString() + "\"";
             }
         }
 
