@@ -21,13 +21,9 @@ package org.datanucleus.ide.eclipse.wizard.schematool;
 
 /**
  * Model for the SchemaTool process, storing all control data that we could use as input.
- * @version $Revision: 1.6 $
  */
 public class SchemaToolModel
 {
-    /** Version of JPOX being used. */
-    private String jpoxVersion = null;
-
     /** path with several URLs separated by ";" semi-colon **/
     private String jdbcDriverPath;
 
@@ -201,15 +197,5 @@ public class SchemaToolModel
     public void setVerbose(boolean verbose)
     {
         this.verbose = verbose;
-    }
-
-    public String getJPOXVersion()
-    {
-        return jpoxVersion;
-    }
-
-    public void setJPOXVersion(String ver)
-    {
-        this.jpoxVersion = ver;
     }
 }
