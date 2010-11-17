@@ -130,14 +130,14 @@ public class LaunchUtilities implements IJavaLaunchConfigurationConstants
 
         String useProjectSettingsStr = javaProject.getResource().getPersistentProperty(
             new QualifiedName("org.datanucleus.ide.eclipse.preferences.general", "useProjectSettings"));
-        boolean useProjectSettings = useProjectSettingsStr != null ? Boolean.getBoolean(useProjectSettingsStr) : false;
+        boolean useProjectSettings = useProjectSettingsStr != null ? Boolean.parseBoolean(useProjectSettingsStr) : false;
 
         boolean useProjectClasspath = Plugin.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.USE_PROJECT_CLASSPATH);
         if (useProjectSettings)
         {
-            String useProjCPCtr = javaProject.getResource().getPersistentProperty(
+            String useProjCPStr = javaProject.getResource().getPersistentProperty(
                 new QualifiedName("org.datanucleus.ide.eclipse.preferences.general", PreferenceConstants.USE_PROJECT_CLASSPATH));
-            useProjectClasspath = (useProjCPCtr != null ? Boolean.getBoolean(useProjCPCtr) : false);
+            useProjectClasspath = (useProjCPStr != null ? Boolean.parseBoolean(useProjCPStr) : false);
         }
 
         if (!useProjectClasspath)
