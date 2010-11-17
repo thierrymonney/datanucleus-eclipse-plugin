@@ -35,6 +35,7 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
@@ -48,10 +49,8 @@ import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 import org.eclipse.jdt.launching.IRuntimeClasspathEntry;
 import org.eclipse.jdt.launching.JavaRuntime;
 
-
 /**
  * Series of utilities used for launching processes.
- * @version $Revision: 1.3 $
  */
 public class LaunchUtilities implements IJavaLaunchConfigurationConstants
 {
@@ -112,12 +111,9 @@ public class LaunchUtilities implements IJavaLaunchConfigurationConstants
     }    
     
     /**
-     * Utility method to obtain the classpath entries for the given
-     * <code>IJavaProject</code>
-     * @param javaProject The <code>IJavaProject</code> the classpath should
-     * be obtained for
-     * @return A <code>List</code> of valid classpath entries as
-     * <code>String</code> values
+     * Utility method to obtain the classpath entries for the given <code>IJavaProject</code>
+     * @param javaProject The <code>IJavaProject</code> the classpath should be obtained for
+     * @return A <code>List</code> of valid classpath entries as <code>String</code> values
      * @throws CoreException
      */
     public static List getDefaultClasspath(IJavaProject javaProject) throws CoreException
@@ -132,14 +128,26 @@ public class LaunchUtilities implements IJavaLaunchConfigurationConstants
             IRuntimeClasspathEntry.STANDARD_CLASSES);
         classpath.add(systemLibsEntry.getMemento());
 
-        boolean useProjectClasspath = Plugin.getDefault().getPreferenceStore().getBoolean(
-            PreferenceConstants.USE_PROJECT_CLASSPATH);
+        String useProjectSettingsStr = javaProject.getResource().getPersistentProperty(
+            new QualifiedName("org.datanucleus.ide.eclipse.preferences.general", "useProjectSettings"));
+        boolean useProjectSettings = useProjectSettingsStr != null ? Boolean.getBoolean(useProjectSettingsStr) : false;
+
+        boolean useProjectClasspath = Plugin.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.USE_PROJECT_CLASSPATH);
+        if (useProjectSettings)
+        {
+            String useProjCPCtr = javaProject.getResource().getPersistentProperty(
+                new QualifiedName("org.datanucleus.ide.eclipse.preferences.general", PreferenceConstants.USE_PROJECT_CLASSPATH));
+            useProjectClasspath = (useProjCPCtr != null ? Boolean.getBoolean(useProjCPCtr) : false);
+        }
+
         if (!useProjectClasspath)
         {
             // Add on user-defined classpath jars if required
-            String classpathPreferences = Plugin.getDefault().getPreferenceStore().getString(
-                PreferenceConstants.CLASSPATH_ENTRIES);
-            IRuntimeClasspathEntry preferenceEntry = JavaRuntime.newStringVariableClasspathEntry(classpathPreferences);
+            String classpathEntries = useProjectSettings ?
+                    javaProject.getResource().getPersistentProperty(
+                        new QualifiedName("org.datanucleus.ide.eclipse.preferences.general", PreferenceConstants.CLASSPATH_ENTRIES)) :
+                    Plugin.getDefault().getPreferenceStore().getString(PreferenceConstants.CLASSPATH_ENTRIES);
+            IRuntimeClasspathEntry preferenceEntry = JavaRuntime.newStringVariableClasspathEntry(classpathEntries);
             classpath.add(preferenceEntry.getMemento());
         }
 

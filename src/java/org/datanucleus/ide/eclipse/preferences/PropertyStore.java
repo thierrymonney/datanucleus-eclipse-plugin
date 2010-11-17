@@ -35,8 +35,6 @@ import org.eclipse.jface.preference.PreferenceStore;
  * http://www.eclipse.org/articles/Article-Mutatis-mutandis/overlay-pages.html
  * Provides access to the workbenchStore for defaults, and to stored values where
  * there are any.
- *
- * @version $Revision: 1.3 $
  */
 public class PropertyStore extends PreferenceStore
 {

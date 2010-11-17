@@ -139,11 +139,14 @@ public abstract class PropertyAndPreferencePage extends PropertyPage
         {
             // Cache the page id
             pageId = getPageId();
+
             // Create an overlay preference store and fill it with properties
             overlayStore = new PropertyStore((IResource) getElement(), super.getPreferenceStore(), getPageId());
-            // Set overlay store as current preference store
+
+            // Set overlay store as current preference store TODO ?
         }
         super.createControl(parent);
+
         // Update enablement of all subclass controls
         if (isPropertyPage())
             setControlsEnabled();
