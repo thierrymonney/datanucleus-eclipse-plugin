@@ -20,10 +20,10 @@ package org.datanucleus.ide.eclipse.console;
 import org.eclipse.ui.console.PatternMatchEvent;
 
 /**
- * Pattern matcher that matches the Enhancer output lines, and adds hyperlinks for the classes referenced.
- * All enhancer success/failure lines are marked with "ENHANCED"
+ * Pattern matcher that matches CLASSPATH entries for SchemaTool and the Enhancer and marks them with hyperlinks.
+ * All classpath entries are preceded by ">> "
  */
-public class EnhancedPatternMatcher extends AbstractJavacPatternMatcher
+public class ClasspathEntryPatternMatcher extends AbstractJavacPatternMatcher
 {
     public void matchFound(PatternMatchEvent event)
     {
@@ -33,7 +33,7 @@ public class EnhancedPatternMatcher extends AbstractJavacPatternMatcher
             return;
         }
 
-        int index = matchedText.indexOf(" : ");
+        int index = matchedText.indexOf(">> ");
         String filePath = matchedText.substring(index + 3);
         filePath = filePath.trim();
 
@@ -41,7 +41,6 @@ public class EnhancedPatternMatcher extends AbstractJavacPatternMatcher
         int eventOffset = event.getOffset() + fileStart;
         int eventLength = filePath.length();
 
-        // TODO Need to convert the package name into a file name
         int lineNumber = -1;
         addLink(filePath, lineNumber, eventOffset, eventLength);
     }
