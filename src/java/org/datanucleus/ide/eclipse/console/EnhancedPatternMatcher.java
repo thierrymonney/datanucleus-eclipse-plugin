@@ -22,6 +22,7 @@ import org.eclipse.ui.console.PatternMatchEvent;
 /**
  * Pattern matcher that matches the Enhancer output lines, and adds hyperlinks for the classes referenced.
  * All enhancer success/failure lines are marked with "ENHANCED"
+ * TODO This is currently disabled in plugin.xml since there is a TODO below that is required first
  */
 public class EnhancedPatternMatcher extends AbstractJavacPatternMatcher
 {
@@ -34,15 +35,16 @@ public class EnhancedPatternMatcher extends AbstractJavacPatternMatcher
         }
 
         int index = matchedText.indexOf(" : ");
-        String filePath = matchedText.substring(index + 3);
-        filePath = filePath.trim();
+        String javaClassName = matchedText.substring(index + 3).trim();
 
-        int fileStart = matchedText.indexOf(filePath);
+        // TODO this is relative to the root of the classpath, so need to make absolute filename
+        String javaFileName = javaClassName.replace('.', '/');
+
+        int fileStart = matchedText.indexOf(javaClassName);
         int eventOffset = event.getOffset() + fileStart;
-        int eventLength = filePath.length();
+        int eventLength = javaClassName.length();
 
-        // TODO Need to convert the package name into a file name
         int lineNumber = -1;
-        addLink(filePath, lineNumber, eventOffset, eventLength);
+        addLink(javaFileName, lineNumber, eventOffset, eventLength);
     }
 }

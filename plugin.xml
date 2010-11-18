@@ -23,10 +23,10 @@
 
     <extension point="org.eclipse.ui.console.consolePatternMatchListeners">
         <!-- Match enhancer output for classes to give link to class -->
-        <consolePatternMatchListener class="org.datanucleus.ide.eclipse.console.EnhancedPatternMatcher"
+        <!--consolePatternMatchListener class="org.datanucleus.ide.eclipse.console.EnhancedPatternMatcher"
             id="matchenhancer" qualifier=".*" regex="(ENHANCED|NOT ENHANCED|UNKNOWN|NOT ENHANCED).*">
             <enablement/>
-        </consolePatternMatchListener>
+        </consolePatternMatchListener-->
 
         <!-- Match enhancer/SchemaTool output for directories to give link to directory -->
         <consolePatternMatchListener class="org.datanucleus.ide.eclipse.console.ClasspathEntryPatternMatcher"
