@@ -177,7 +177,8 @@ public class CreatePersistenceXmlAction implements IObjectActionDelegate
         str.append("    xsi:schemaLocation=\"http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd\" version=\"1.0\">\n");
         str.append("\n");
 
-        str.append("    <persistence-unit name=\"TEST\">\n");
+        String indent = "    ";
+        str.append(indent).append("<persistence-unit name=\"TEST\">\n");
 
         // <mapping-file> for each jdo file
         List argsList = new ArrayList();
@@ -185,9 +186,7 @@ public class CreatePersistenceXmlAction implements IObjectActionDelegate
             new String[] {"jdo"}, false);
         for (int i = 0; i < argsList.size(); i++)
         {
-            str.append("        <mapping-file>");
-            str.append(argsList.get(i));
-            str.append("</mapping-file>\n");
+            str.append(indent).append(indent).append("<mapping-file>").append(argsList.get(i)).append("</mapping-file>\n");
         }
 
         // <class> for each annotated class
@@ -199,7 +198,7 @@ public class CreatePersistenceXmlAction implements IObjectActionDelegate
             // TODO Check if class is annotated
         }
 
-        str.append("    </persistence-unit>\n");
+        str.append(indent).append("</persistence-unit>\n");
         str.append("</persistence>\n");
         return str.toString();
     }
