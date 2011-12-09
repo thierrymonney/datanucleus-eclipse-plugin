@@ -61,8 +61,6 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 
 /**
  * Preferences Page for DataNucleus SchemaTool.
- *
- * @version $Revision: 1.8 $
  */
 public class SchemaToolPreferencePage extends PropertyAndPreferencePage implements IWorkbenchPreferencePage, PreferenceConstants
 {
@@ -99,9 +97,6 @@ public class SchemaToolPreferencePage extends PropertyAndPreferencePage implemen
 
     /** Browse button for properties file name selection. */
     private Button propertiesFileBrowseButton;
-
-    /** Combo selector for API. */
-    private Combo apiCombo;
 
     /** Text widget storing the persistence-unit name. */
     private Text persistenceUnitText;
@@ -175,16 +170,6 @@ public class SchemaToolPreferencePage extends PropertyAndPreferencePage implemen
         gd.horizontalSpan = 2;
         verboseModeCheckButton.setLayoutData(gd);
         verboseModeCheckButton.setToolTipText(Localiser.getString("SchemaToolPreferences.Verbose.Tooltip"));
-
-        // API
-        Label apiLabel = new Label(composite, SWT.NULL);
-        apiLabel.setText(Localiser.getString("SchemaToolPreferences.API.Label"));
-
-        apiCombo = new Combo(composite, SWT.DROP_DOWN | SWT.READ_ONLY);
-        apiCombo.setItems(new String[] {"JDO", "JPA"});
-        GridData apiGrid = new GridData(SWT.FILL, SWT.NULL, false, false);
-        apiCombo.setLayoutData(apiGrid);
-        apiCombo.setToolTipText(Localiser.getString("SchemaToolPreferences.API.Tooltip"));
 
         // Persistence Unit
         Label persistenceUnitLabel = new Label(composite, SWT.NULL);
@@ -511,7 +496,6 @@ public class SchemaToolPreferencePage extends PropertyAndPreferencePage implemen
         passwordText.setText(getPreferenceStore().getString(SCHEMATOOL_DATASTORE_PASSWORD));
         propertiesFileText.setText(getPreferenceStore().getString(SCHEMATOOL_PROPERTIES_FILE));
         verboseModeCheckButton.setSelection(getPreferenceStore().getBoolean(SCHEMATOOL_VERBOSE_MODE));
-        apiCombo.setText(getPreferenceStore().getString(SCHEMATOOL_API));
         persistenceUnitText.setText(getPreferenceStore().getString(SCHEMATOOL_PERSISTENCE_UNIT));
     }
 
@@ -529,7 +513,6 @@ public class SchemaToolPreferencePage extends PropertyAndPreferencePage implemen
         getPreferenceStore().setValue(SCHEMATOOL_DATASTORE_PASSWORD, passwordText.getText());
         getPreferenceStore().setValue(SCHEMATOOL_PROPERTIES_FILE, propertiesFileText.getText());
         getPreferenceStore().setValue(SCHEMATOOL_VERBOSE_MODE, verboseModeCheckButton.getSelection());
-        getPreferenceStore().setValue(SCHEMATOOL_API, apiCombo.getText());
         getPreferenceStore().setValue(SCHEMATOOL_PERSISTENCE_UNIT, persistenceUnitText.getText());
 
         return super.performOk();

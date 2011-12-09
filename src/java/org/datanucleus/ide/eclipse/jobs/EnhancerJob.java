@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datanucleus.ide.eclipse.preferences.EnhancerPreferencePage;
+import org.datanucleus.ide.eclipse.preferences.GeneralPreferencePage;
 import org.datanucleus.ide.eclipse.preferences.PreferenceConstants;
 import org.datanucleus.ide.eclipse.project.ProjectHelper;
 import org.eclipse.core.resources.IResource;
@@ -63,28 +64,20 @@ public class EnhancerJob extends WorkspaceJob
     {
         StringBuffer args = new StringBuffer();
 
+        // API
+        String apiName = ProjectHelper.getStringPreferenceValue(resource, GeneralPreferencePage.PAGE_ID,
+            PreferenceConstants.PERSISTENCE_API);
+        if (apiName != null && apiName.trim().length() > 0)
+        {
+            args.append(" -api ").append(apiName.trim());
+        }
+
         // verbose
         boolean verboseMode = ProjectHelper.getBooleanPreferenceValue(resource, EnhancerPreferencePage.PAGE_ID,
             PreferenceConstants.ENHANCER_VERBOSE_MODE);
         if (verboseMode)
         {
             args.append(" -v ");
-        }
-
-        // enhancerName
-        String classEnhancerName = ProjectHelper.getStringPreferenceValue(resource, EnhancerPreferencePage.PAGE_ID,
-            PreferenceConstants.ENHANCER_CLASS_ENHANCER);
-        if (classEnhancerName != null && classEnhancerName.trim().length() > 0)
-        {
-            args.append(" -enhancerName ").append(classEnhancerName.trim());
-        }
-
-        // API
-        String apiName = ProjectHelper.getStringPreferenceValue(resource, EnhancerPreferencePage.PAGE_ID,
-            PreferenceConstants.ENHANCER_API);
-        if (apiName != null && apiName.trim().length() > 0)
-        {
-            args.append(" -api ").append(apiName.trim());
         }
 
         // PersistenceUnit

@@ -28,7 +28,6 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
@@ -39,11 +38,8 @@ import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-
 /**
  * Preferences Page for the DataNucleus Enhancer.
- *
- * @version $Revision$
  */
 public class EnhancerPreferencePage extends PropertyAndPreferencePage implements IWorkbenchPreferencePage, PreferenceConstants
 {
@@ -60,12 +56,6 @@ public class EnhancerPreferencePage extends PropertyAndPreferencePage implements
 
     /** Button to remove file extension(s). */
     private Button fileExtensionsRemoveButton;
-
-    /** Text field containing the ClassEnhancer name to use. */
-    private Text classEnhancerText;
-
-    /** Combo selector for API. */
-    private Combo apiCombo;
 
     /** Text field containing the persistence-unit name to use. */
     private Text persistenceUnitText;
@@ -132,26 +122,6 @@ public class EnhancerPreferencePage extends PropertyAndPreferencePage implements
         verboseModeCheckButton.setText(Localiser.getString("EnhancerPreferences.Verbose.Label"));
         verboseModeCheckButton.setLayoutData(new GridData(SWT.FILL, SWT.NULL, true, false, 2, 1));
         verboseModeCheckButton.setToolTipText(Localiser.getString("EnhancerPreferences.Verbose.Tooltip"));
-
-        // API
-        Label apiLabel = new Label(composite, SWT.NULL);
-        apiLabel.setText(Localiser.getString("EnhancerPreferences.API.Label"));
-
-        apiCombo = new Combo(composite, SWT.DROP_DOWN | SWT.READ_ONLY);
-        apiCombo.setItems(new String[] {"JDO", "JPA"});
-        GridData apiGrid = new GridData(SWT.FILL, SWT.NULL, false, false);
-        apiCombo.setLayoutData(apiGrid);
-        apiCombo.setToolTipText(Localiser.getString("EnhancerPreferences.API.Tooltip"));
-
-        // Class Enhancer
-        Label classEnhancerLabel = new Label(composite, SWT.NULL);
-        classEnhancerLabel.setText(Localiser.getString("EnhancerPreferences.ClassEnhancer.Label"));
-
-        classEnhancerText = new Text(composite, SWT.BORDER | SWT.SINGLE);
-        GridData classEnhancerGrid = new GridData(SWT.FILL, SWT.NULL, false, false);
-        classEnhancerGrid.widthHint = 50;
-        classEnhancerText.setLayoutData(classEnhancerGrid);
-        classEnhancerText.setToolTipText(Localiser.getString("EnhancerPreferences.ClassEnhancer.Tooltip"));
 
         // Persistence Unit
         Label persistenceUnitLabel = new Label(composite, SWT.NULL);
@@ -250,8 +220,6 @@ public class EnhancerPreferencePage extends PropertyAndPreferencePage implements
         fileExtensionsList.setItems(extensionEntries);
 
         verboseModeCheckButton.setSelection(getPreferenceStore().getBoolean(ENHANCER_VERBOSE_MODE));
-        classEnhancerText.setText(getPreferenceStore().getString(ENHANCER_CLASS_ENHANCER));
-        apiCombo.setText(getPreferenceStore().getString(ENHANCER_API));
         persistenceUnitText.setText(getPreferenceStore().getString(ENHANCER_PERSISTENCE_UNIT));
     }
 
@@ -263,8 +231,6 @@ public class EnhancerPreferencePage extends PropertyAndPreferencePage implements
     {
         getPreferenceStore().setValue(ENHANCER_INPUT_FILE_EXTENSIONS, getFileExtensions());
         getPreferenceStore().setValue(ENHANCER_VERBOSE_MODE, verboseModeCheckButton.getSelection());
-        getPreferenceStore().setValue(ENHANCER_CLASS_ENHANCER, classEnhancerText.getText());
-        getPreferenceStore().setValue(ENHANCER_API, apiCombo.getText());
         getPreferenceStore().setValue(ENHANCER_PERSISTENCE_UNIT, persistenceUnitText.getText());
 
         return super.performOk();

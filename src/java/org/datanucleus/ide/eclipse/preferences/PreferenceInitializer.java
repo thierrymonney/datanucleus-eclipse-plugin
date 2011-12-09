@@ -34,6 +34,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer
         IPreferenceStore store = Plugin.getDefault().getPreferenceStore();
 
         // General
+        store.setDefault(PreferenceConstants.PERSISTENCE_API, "JDO");
         String loggingConfiguration = "";
         try
         {
@@ -44,18 +45,14 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer
             e.printStackTrace();
         }
         store.setDefault(PreferenceConstants.LOGGING_CONFIGURATION_FILE, loggingConfiguration);
-
         store.setDefault(PreferenceConstants.USE_PROJECT_CLASSPATH, true);
 
         // Enhancer
         String val = "jdo" + System.getProperty("path.separator") + "class";
         store.setDefault(PreferenceConstants.ENHANCER_VERBOSE_MODE, false);
         store.setDefault(PreferenceConstants.ENHANCER_INPUT_FILE_EXTENSIONS, val);
-        store.setDefault(PreferenceConstants.ENHANCER_CLASS_ENHANCER, "ASM");
-        store.setDefault(PreferenceConstants.ENHANCER_API, "JDO");
 
         // SchemaTool
         store.setDefault(PreferenceConstants.SCHEMATOOL_INPUT_FILE_EXTENSIONS, val);
-        store.setDefault(PreferenceConstants.SCHEMATOOL_API, "JDO");
     }
 }

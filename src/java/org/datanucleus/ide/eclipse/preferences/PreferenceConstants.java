@@ -22,15 +22,19 @@ package org.datanucleus.ide.eclipse.preferences;
  */
 public interface PreferenceConstants
 {
+    public String PERSISTENCE_API = "persistenceAPI";
+
+    public String LOGGING_CONFIGURATION_FILE = "loggingConfigurationFile";
+
+    public String CLASSPATH_ENTRIES = "classpathEntries";
+
+    public String USE_PROJECT_CLASSPATH = "useProjectClasspath";
+
     public String ENHANCER_AUTO_ENHANCEMENT = "enhancerAutoEnhancement";
 
     public String ENHANCER_VERBOSE_MODE = "enhancerVerboseMode";
 
     public String ENHANCER_INPUT_FILE_EXTENSIONS = "enhancerInputFileExtensions";
-
-    public String ENHANCER_CLASS_ENHANCER = "enhancerClassEnhancerName";
-
-    public String ENHANCER_API = "enhancerAPI";
 
     public String ENHANCER_PERSISTENCE_UNIT = "enhancerPersistenceUnit";
 
@@ -50,13 +54,5 @@ public interface PreferenceConstants
 
     public String SCHEMATOOL_VERBOSE_MODE = "schemaToolVerboseMode";
 
-    public String SCHEMATOOL_API = "schemaToolAPI";
-
     public String SCHEMATOOL_PERSISTENCE_UNIT = "schematoolPersistenceUnit";
-
-    public String LOGGING_CONFIGURATION_FILE = "loggingConfigurationFile";
-
-    public String CLASSPATH_ENTRIES = "classpathEntries";
-
-    public String USE_PROJECT_CLASSPATH = "useProjectClasspath";
 }

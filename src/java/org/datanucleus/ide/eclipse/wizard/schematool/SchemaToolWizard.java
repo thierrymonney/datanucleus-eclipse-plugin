@@ -125,8 +125,6 @@ public class SchemaToolWizard extends Wizard implements INewWizard
         model.setFileName(Plugin.getDefault().getPluginPreferences().getString(P_FILE_NAME));
 
         // From plugin/project preferences
-        model.setApi(ProjectHelper.getStringPreferenceValue(javaProject.getProject(),
-            SchemaToolPreferencePage.PAGE_ID, PreferenceConstants.SCHEMATOOL_API));
         model.setVerbose(ProjectHelper.getBooleanPreferenceValue(javaProject.getProject(),
             SchemaToolPreferencePage.PAGE_ID, PreferenceConstants.SCHEMATOOL_VERBOSE_MODE));
     }

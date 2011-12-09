@@ -31,6 +31,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.FileDialog;
@@ -48,6 +49,9 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 public class GeneralPreferencePage extends PropertyAndPreferencePage implements IWorkbenchPreferencePage, PreferenceConstants
 {
     public static final String PAGE_ID = "org.datanucleus.ide.eclipse.preferences.general"; 
+
+    /** Combo selector for API. */
+    private Combo apiCombo;
 
     /** Text widget storing the log file name. */
     private Text logFileText;
@@ -92,16 +96,26 @@ public class GeneralPreferencePage extends PropertyAndPreferencePage implements 
         gd.horizontalSpan = 3;
         help.setLayoutData(gd);
 
+        // API
+        Label apiLabel = new Label(composite, SWT.NULL);
+        apiLabel.setText(Localiser.getString("GeneralPreferences.API.Label"));
+
+        apiCombo = new Combo(composite, SWT.DROP_DOWN | SWT.READ_ONLY);
+        apiCombo.setItems(new String[] {"JDO", "JPA"});
+        GridData apiGrid = new GridData(SWT.FILL, SWT.NULL, false, false);
+        apiCombo.setLayoutData(apiGrid);
+        apiCombo.setToolTipText(Localiser.getString("GeneralPreferences.API.Tooltip"));
+
         // Classpath
         Group group = new Group(composite, SWT.NONE);
         group.setText(Localiser.getString("GeneralPreferences.JarEntries.Label"));
-        gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd = new GridData(GridData.FILL_VERTICAL);
         gd.horizontalSpan = 3;
         gd.heightHint = 200;
         group.setLayoutData(gd);
 
         GridLayout layout = new GridLayout();
-        layout.numColumns = 2;
+        layout.numColumns = 1;
         layout.marginWidth = layout.marginHeight = 10;
         layout.horizontalSpacing = 10;
         group.setLayout(layout);
@@ -113,6 +127,7 @@ public class GeneralPreferencePage extends PropertyAndPreferencePage implements 
 
         Composite buttonGroup = new Composite(group, SWT.NULL);
         GridLayout buttonLayout = new GridLayout();
+        buttonLayout.numColumns = 2;
         buttonLayout.marginTop = 0;
         buttonGroup.setLayout(buttonLayout);
         buttonGroup.setLayoutData(new GridData(GridData.FILL_BOTH, SWT.BEGINNING, false, false));
@@ -279,6 +294,8 @@ public class GeneralPreferencePage extends PropertyAndPreferencePage implements 
      */
     private void initControls()
     {
+        apiCombo.setText(getPreferenceStore().getString(PERSISTENCE_API));
+
         String classpath = getPreferenceStore().getString(CLASSPATH_ENTRIES);
         String[] classpathEntries = classpath.split(System.getProperty("path.separator"));
         classpathJarsList.setItems(classpathEntries);
@@ -299,6 +316,7 @@ public class GeneralPreferencePage extends PropertyAndPreferencePage implements 
      */
     public boolean performOk()
     {
+        getPreferenceStore().setValue(PERSISTENCE_API, apiCombo.getText());
         getPreferenceStore().setValue(LOGGING_CONFIGURATION_FILE, logFileText.getText());
         getPreferenceStore().setValue(CLASSPATH_ENTRIES, getClasspathEntries());
         getPreferenceStore().setValue(USE_PROJECT_CLASSPATH, projectClasspathButton.getSelection());

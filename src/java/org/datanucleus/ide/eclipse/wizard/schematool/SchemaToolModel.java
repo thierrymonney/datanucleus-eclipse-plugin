@@ -52,9 +52,6 @@ public class SchemaToolModel
     /** Filename to use for dumping the DDL. */
     private String fileName;
 
-    /** API to use with SchemaTool. */
-    private String api;
-
     /** PersistenceUNit to use with SchemaTool. */
     private String persistenceUnit;
 
@@ -167,16 +164,6 @@ public class SchemaToolModel
     public void setDumpToFile(boolean dumpToFile)
     {
         this.dumpToFile = dumpToFile;
-    }
-
-    public String getApi()
-    {
-        return api;
-    }
-
-    public void setApi(String api)
-    {
-        this.api = api;
     }
 
     public String getPersistenceUnit()

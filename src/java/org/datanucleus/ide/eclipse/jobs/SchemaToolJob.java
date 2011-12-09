@@ -25,6 +25,7 @@ import java.util.List;
 
 import org.datanucleus.ide.eclipse.Localiser;
 import org.datanucleus.ide.eclipse.Plugin;
+import org.datanucleus.ide.eclipse.preferences.GeneralPreferencePage;
 import org.datanucleus.ide.eclipse.preferences.PreferenceConstants;
 import org.datanucleus.ide.eclipse.preferences.SchemaToolPreferencePage;
 import org.datanucleus.ide.eclipse.project.ProjectHelper;
@@ -193,7 +194,8 @@ public class SchemaToolJob extends Job implements IDebugEventSetListener
         }
 
         // API
-        String apiName = model.getApi();
+        String apiName = ProjectHelper.getStringPreferenceValue(resource, GeneralPreferencePage.PAGE_ID,
+            PreferenceConstants.PERSISTENCE_API);
         if (apiName != null && apiName.trim().length() > 0)
         {
             args.append(" -api ").append(apiName.trim());
