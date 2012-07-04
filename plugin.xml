@@ -209,7 +209,7 @@
                class="org.datanucleus.ide.eclipse.popup.actions.CreateAppId"
                menubarPath="datanucleus-eclipse.contribution.compilation.menu/group"
                id="datanucleus-eclipse.contribution.compilation.actions.createinner"/>
-            <action label="Create JDO 2.0 Metadata File"
+            <action label="Create JDO XML Metadata File"
                class="org.datanucleus.ide.eclipse.popup.actions.CreateMetadataAction"
                menubarPath="datanucleus-eclipse.contribution.compilation.menu/group"
                id="datanucleus-eclipse.contribution.compilation.actions.createmetadata"/>
@@ -224,7 +224,7 @@
             <menu label="datanucleus" id="datanucleus-eclipse.contribution.package.menu">
                 <separator name="group"/>
             </menu>
-            <action label="Create JDO 2.0 Metadata File"
+            <action label="Create JDO XML Metadata File"
                class="org.datanucleus.ide.eclipse.popup.actions.CreateMetadataAction"
                menubarPath="datanucleus-eclipse.contribution.package.menu/group"
                id="datanucleus-eclipse.contribution.package.actions.createmetadata"/>
